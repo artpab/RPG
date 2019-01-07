@@ -13,14 +13,17 @@
 
 #include "Forest.hpp"
 
-Forest::Forest(int X, int Y):Field(X,Y){}
-
-void Forest::printField()
-{
-    std::cout<<"#";
+Forest::Forest(int X, int Y) : Field(X, Y) {
 }
+
+void Forest::printField() {
+    std::cout << "#";
+}
+
 Forest::~Forest() {
 }
+
 std::ostream& Forest::operator<<(std::ostream& stream) {
-    stream<<"#";
+    stream << "#";
+    return stream;
 }

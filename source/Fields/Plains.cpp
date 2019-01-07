@@ -26,4 +26,5 @@ void Plains::printField()
 
 std::ostream& Plains::operator<<(std::ostream& stream) {
     stream<<".";
+    return stream;
 }

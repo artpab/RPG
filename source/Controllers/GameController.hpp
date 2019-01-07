@@ -16,6 +16,10 @@
 #include "MapController.hpp"
 #include <memory>
 
+enum class GameStartingPoint
+{
+    generate_new_map = 1,load_map_from_file = 2
+};
 
 class GameController {
 public:
@@ -24,11 +28,15 @@ public:
     void operator=(GameController const&) = delete;
     void prepareMap();
     void startGame();
+    void gatherInformation();
+    void setStartingPoint(const std::string&);
+    std::pair<int,int> askForDimensions();
     ~GameController();
 private:
     GameController(){}
 
     std::unique_ptr<Map> gameMap;
+    GameStartingPoint startingPoint;
 
 };
 

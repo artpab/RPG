@@ -13,14 +13,17 @@
 
 #include "Water.hpp"
 
-Water::Water(int X, int Y):Field(X,Y){}
-
-void Water::printField()
-{
-    std::cout<<"~";
+Water::Water(int X, int Y) : Field(X, Y) {
 }
+
+void Water::printField() {
+    std::cout << "~";
+}
+
 Water::~Water() {
 }
+
 std::ostream& Water::operator<<(std::ostream& stream) {
-    stream<<"~";
+    stream << "~";
+    return stream;
 }

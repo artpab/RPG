@@ -27,16 +27,18 @@ enum class FieldTypes
     fields_chance, woods_chance, water_chance
 };
 
+
 class Map {
 public:
     Map();
     Map(std::vector<int> chance_vec);
     virtual ~Map();
-    void create_map(const std::vector<int>& chance_vec);
+    void create_map(const std::pair<int,int>& , const std::vector<int>&);
     
 private:
 std::map<int, std::shared_ptr<Field>> field_map;
 std::vector<int> chance_vec;
+
 };
 
 #endif /* MAP_HPP */
