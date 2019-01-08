@@ -20,6 +20,7 @@ public:
     virtual ~Plains();
     Plains(int X, int Y);
     void printField() override;
+    std::string getType() override;
     std::ostream& operator<< (std::ostream& stream) override;
 private:
 

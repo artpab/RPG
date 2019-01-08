@@ -11,14 +11,16 @@
  * Created on January 6, 2019, 12:11 PM
  */
 
-#ifndef MAP_HPP
-#define MAP_HPP
+#ifndef MAPCONTROLLER_HPP
+#define MAPCONTROLLER_HPP
 #include <map>
 #include <memory>
 #include "../Fields/Field.hpp"
 #include "../Fields/Forest.hpp"
 #include "../Fields/Water.hpp"
 #include "../Fields/Plains.hpp"
+#include "../MapIO/MapWriter.hpp"
+#include "../MapIO/MapReader.hpp"
 #include <iostream>
 #include <ctime>
 
@@ -28,18 +30,24 @@ enum class FieldTypes
 };
 
 
-class Map {
+class MapController{
 public:
-    Map();
-    Map(std::vector<int> chance_vec);
-    virtual ~Map();
+    MapController();
+    MapController(std::vector<int> chance_vec);
+    virtual ~MapController();
     void create_map(const std::pair<int,int>& , const std::vector<int>&);
+    void save_map();
+    void load_map();
+    void load_map_from_XML(std::shared_ptr<MapReader>, std::map<int, std::shared_ptr<Field>>&);
+    void print_map();
     
 private:
 std::map<int, std::shared_ptr<Field>> field_map;
 std::vector<int> chance_vec;
+std::shared_ptr<MapWriter> ptr_MapWriter = nullptr;
+std::shared_ptr<MapReader> ptr_MapReader = nullptr;
 
 };
 
-#endif /* MAP_HPP */
+#endif /* MAPCONTROLLER_HPP */
 

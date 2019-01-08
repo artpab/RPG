@@ -21,7 +21,6 @@
 // Preferably polimorphism mechanism will be used.
 
 
-
 class Field {
 private:
     int posX, posY;
@@ -35,6 +34,7 @@ public:
     int getX(){return posX;} 
     int getY(){return posY;}
     virtual void printField() = 0;
+    virtual std::string getType() = 0;
     virtual std::ostream& operator<< (std::ostream& stream) = 0 ;
 private:
 

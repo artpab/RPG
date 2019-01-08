@@ -31,11 +31,12 @@ public:
     void gatherInformation();
     void setStartingPoint(const std::string&);
     std::pair<int,int> askForDimensions();
+    void askForMapSave();
     ~GameController();
 private:
-    GameController(){}
+    GameController();
 
-    std::unique_ptr<Map> gameMap;
+    std::unique_ptr<MapController> ptr_MapController;
     GameStartingPoint startingPoint;
 
 };

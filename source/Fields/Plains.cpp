@@ -28,3 +28,8 @@ std::ostream& Plains::operator<<(std::ostream& stream) {
     stream<<".";
     return stream;
 }
+
+std::string Plains::getType()
+{
+    return "Plains";
+}

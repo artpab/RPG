@@ -21,6 +21,10 @@ GameController &GameController::getInstance() {
 GameController::~GameController() {
 }
 
+GameController::GameController() {
+    ptr_MapController = std::make_unique<MapController>();
+}
+
 void GameController::prepareMap() {
     gatherInformation();
     switch (startingPoint) {
@@ -28,15 +32,17 @@ void GameController::prepareMap() {
         {
             std::cout << " Generating a new map! \n";
             auto dimensions = askForDimensions();
-            auto map_ptr = std::make_unique<Map>();
             std::vector<int> landscape_chance_vec{60, 30, 10};
-            map_ptr->create_map(dimensions, landscape_chance_vec);
+            ptr_MapController->create_map(dimensions, landscape_chance_vec);
+            ptr_MapController->print_map();
+            askForMapSave();
             break;
         }
         case GameStartingPoint::load_map_from_file:
         {
             std::cout << "Loading map from a file! \n";
-            std::cout << "Not yet implemented! \n";
+            ptr_MapController->load_map();
+            ptr_MapController->print_map();
             break;
         }
         default:
@@ -64,26 +70,43 @@ void GameController::setStartingPoint(const std::string& choice) {
 }
 
 std::pair<int, int> GameController::askForDimensions() {
-    u_int32_t x=0, y=0;
-   
+    u_int32_t x = 0, y = 0;
+
     std::cout << "Please provide the dimensions for the map: \n";
     std::cout << "X: ";
     std::cin>>x;
-    while (std::cin.fail())
-    {
-        std::cout << "Please provide a proper value !" << std::endl;
+    while (std::cin.fail()) {
+        std::cout << "Please provide a proper value !\n";
         std::cin.clear();
-        std::cin.ignore(256,'\n');
+        std::cin.ignore(256, '\n');
         std::cin >> x;
     }
     std::cout << "Y ";
     std::cin>>y;
-    while (std::cin.fail())
-    {
-        std::cout << "Please provide a proper value !" << std::endl;
+    while (std::cin.fail()) {
+        std::cout << "Please provide a proper value \n!";
         std::cin.clear();
-        std::cin.ignore(256,'\n');
+        std::cin.ignore(256, '\n');
         std::cin >> y;
     }
     return std::make_pair(x, y);
 }
+
+void GameController::askForMapSave() {
+    std::string input;
+
+    std::cout << "Would you like to save the map to file? (Y or N)\n";
+    std::cin>>input;
+    while (input != "Y" && input != "y" && input != "n" && input != "N") {
+        std::cout << "Please provide a proper answer : yYNn !\n";
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> input;
+    }
+    
+    if (input=="Y" || input == "y")
+    {
+        ptr_MapController->save_map();
+    }
+
+    }

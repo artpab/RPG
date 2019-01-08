@@ -1,33 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Map.cpp
- * Author: goti
- * 
- * Created on January 6, 2019, 12:11 PM
- */
 
 #include "MapController.hpp"
 #include "memory"
-//#include "source/Fields/Plains.hpp"
 
 
-Map::Map() : chance_vec{34, 33, 33}
+MapController::MapController() : chance_vec{34, 33, 33}
 {
 
 }
 
-Map::Map(std::vector<int> chance_vec) : chance_vec(chance_vec) {
+MapController::MapController(std::vector<int> chance_vec) : chance_vec(chance_vec) {
 }
 
-Map::~Map() {
+MapController::~MapController() {
 }
 
-void Map::create_map(const std::pair<int,int>& dimensions, const std::vector<int>& chance_vec) {
+void MapController::create_map(const std::pair<int,int>& dimensions, const std::vector<int>& chance_vec) {
     int id = 0;
     srand(time(NULL));
     for (int i = 0; i < dimensions.first; ++i) {
@@ -43,9 +30,29 @@ void Map::create_map(const std::pair<int,int>& dimensions, const std::vector<int
                 auto field_ptr = std::make_shared<Water>(i, j);
                 field_map.emplace(id,field_ptr);
             }
-            field_map[id]->printField();
             ++id;
         }
         std::cout << "\n";
     }
+}
+
+void MapController::save_map()
+{
+        ptr_MapWriter = std::make_shared<MapWriter>();
+        ptr_MapWriter->writeMap(field_map);
+}
+
+void MapController::load_map()
+{
+    ptr_MapReader = std::make_shared<MapReader>();
+    ptr_MapReader->loadMapfromXML(field_map);
+}
+
+void MapController::print_map()
+{
+    for (auto& element:field_map)
+    {
+        element.second->printField();
+    }
+    
 }

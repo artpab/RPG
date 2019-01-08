@@ -27,3 +27,8 @@ std::ostream& Water::operator<<(std::ostream& stream) {
     stream << "~";
     return stream;
 }
+
+std::string Water::getType()
+{
+    return "Water";
+}

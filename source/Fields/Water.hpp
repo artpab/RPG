@@ -17,11 +17,11 @@
 
 class Water : public Field {
 public:
-//    Water();
     Water(int X, int Y);
     Water(const Water& orig);
     virtual ~Water();
     void printField() override;
+    std::string getType() override;
     std::ostream& operator<< (std::ostream& stream) override;
 private:
 

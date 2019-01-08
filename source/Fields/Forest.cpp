@@ -27,3 +27,7 @@ std::ostream& Forest::operator<<(std::ostream& stream) {
     stream << "#";
     return stream;
 }
+std::string Forest::getType()
+{
+    return "Forest";
+}

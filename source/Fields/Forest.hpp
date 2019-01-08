@@ -17,10 +17,10 @@
 
 class Forest : public Field {
 public:
-//    Water();
     Forest(int X, int Y);
     virtual ~Forest();
     void printField() override;
+    std::string getType() override;
     std::ostream& operator<< (std::ostream& stream) override;
 private:
 };
