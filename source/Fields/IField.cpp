@@ -11,14 +11,12 @@
  * Created on January 6, 2019, 12:12 PM
  */
 
-#include "Field.hpp"
+#include "IField.hpp"
 #include "stdio.h"
 #include "iostream"
 
-Field::Field(int X, int Y):posX(X), posY(Y){
-}
+IField::IField() {
+};
 
-
-Field::~Field() {
-}
-
+IField::~IField() {
+};

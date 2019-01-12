@@ -1,27 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Forest.hpp
- * Author: goti
- *
- * Created on January 6, 2019, 3:37 PM
- */
 
 #ifndef FOREST_HPP
 #define FOREST_HPP
-#include "Field.hpp"
+#include "IField.hpp"
+#include "TerrainModels/ForestModel.hpp"
 
-class Forest : public Field {
+class Forest : public IField {
+private:
+    int _posX, _posY;
+    std::shared_ptr<ForestModel> _model_ptr = nullptr;
 public:
-    Forest(int X, int Y);
+    Forest(int X, int Y, std::shared_ptr<ForestModel> ptr);
     virtual ~Forest();
     void printField() override;
     std::string getType() override;
-    std::ostream& operator<< (std::ostream& stream) override;
+    std::ostream& operator<<(std::ostream& stream) override;
+
+    int getX() override {
+        return _posX;
+    }
+
+    int getY() override {
+        return _posY;
+    }
 private:
 };
 

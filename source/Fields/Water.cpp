@@ -13,7 +13,7 @@
 
 #include "Water.hpp"
 
-Water::Water(int X, int Y) : Field(X, Y) {
+Water::Water(int X, int Y, std::shared_ptr<WaterModel> ptr) :_posX(X),_posY(Y), _model_ptr(ptr){
 }
 
 void Water::printField() {

@@ -16,13 +16,13 @@
 #include <boost/property_tree/xml_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <map>
-#include "../Fields/Field.hpp"
+#include "../Fields/IField.hpp"
 
 class MapWriter {
 public:
     MapWriter();
     virtual ~MapWriter();
-    void writeMap(const std::map<int, std::shared_ptr<Field>>&);
+    void writeMap(const std::map<int, std::shared_ptr<IField>>&);
 private:
 
 };

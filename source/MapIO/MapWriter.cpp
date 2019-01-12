@@ -24,7 +24,7 @@ MapWriter::MapWriter() {
 MapWriter::~MapWriter() {
 }
 
-void MapWriter::writeMap(const std::map<int, std::shared_ptr<Field>>&map_ptr) {
+void MapWriter::writeMap(const std::map<int, std::shared_ptr<IField>>&map_ptr) {
 
     ptree tree;
 

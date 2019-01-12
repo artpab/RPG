@@ -1,29 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/* 
- * File:   Water.hpp
- * Author: goti
- *
- * Created on January 6, 2019, 3:36 PM
- */
 
 #ifndef WATER_HPP
 #define WATER_HPP
-#include "Field.hpp"
+#include "IField.hpp"
+#include "TerrainModels/WaterModel.hpp"
 
-class Water : public Field {
+class Water : public IField {
+private:
+    int _posX, _posY;
+        std::shared_ptr<WaterModel> _model_ptr = nullptr;
 public:
-    Water(int X, int Y);
+    Water(int X, int Y, std::shared_ptr<WaterModel> ptr);
     Water(const Water& orig);
     virtual ~Water();
     void printField() override;
     std::string getType() override;
-    std::ostream& operator<< (std::ostream& stream) override;
-private:
+    std::ostream& operator<<(std::ostream& stream) override;
+
+    int getX() override {
+        return _posX;
+    }
+
+    int getY() override {
+        return _posY;
+    }
 
 };
 

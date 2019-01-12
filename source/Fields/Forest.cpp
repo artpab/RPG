@@ -1,19 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Forest.cpp
- * Author: goti
- * 
- * Created on January 6, 2019, 3:37 PM
- */
 
 #include "Forest.hpp"
 
-Forest::Forest(int X, int Y) : Field(X, Y) {
+Forest::Forest(int X, int Y, std::shared_ptr<ForestModel> ptr) : IField(), _posX(X), _posY(Y), _model_ptr(ptr){
 }
 
 void Forest::printField() {

@@ -26,7 +26,7 @@ MapReader::MapReader(const MapReader& orig) {
 MapReader::~MapReader() {
 }
 
-void MapReader::loadMapfromXML(std::map<int, std::shared_ptr<Field>>&outputMap) {
+void MapReader::loadMapfromXML(std::map<int, std::shared_ptr<IField>>&outputMap) {
     std::string file_name;
     std::string path_base{"/home/goti/Documents/C++Projects/RPG/"};
     std::cout << "What is the name of the file to load? \n";

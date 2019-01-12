@@ -13,15 +13,22 @@
 
 #ifndef PLAINS_HPP
 #define PLAINS_HPP
-#include "Field.hpp"
+#include "IField.hpp"
+#include "TerrainModels/PlainsModel.hpp"
 
-class Plains : public Field {
+class Plains : public IField {
+private:
+    int _posX, _posY;
+    std::shared_ptr<PlainsModel> _model_ptr = nullptr;
 public:
     virtual ~Plains();
-    Plains(int X, int Y);
+    Plains(int X, int Y, std::shared_ptr<PlainsModel> ptr);
     void printField() override;
     std::string getType() override;
-    std::ostream& operator<< (std::ostream& stream) override;
+    std::ostream& operator<<(std::ostream& stream) override;
+    int getX() override {return _posX;}
+    int getY() override {return _posY;}
+
 private:
 
 };

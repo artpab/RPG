@@ -17,7 +17,7 @@
 #include <boost/property_tree/xml_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <map>
-#include "../Fields/Field.hpp"
+#include "../Fields/IField.hpp"
 #include "../Fields/Forest.hpp"
 #include "../Fields/Water.hpp"
 #include "../Fields/Plains.hpp"
@@ -30,7 +30,7 @@ public:
     MapReader();
     MapReader(const MapReader& orig);
     virtual ~MapReader();
-    void loadMapfromXML(std::map<int,std::shared_ptr<Field>>&);
+    void loadMapfromXML(std::map<int,std::shared_ptr<IField>>&);
 
 private:
 
