@@ -18,22 +18,22 @@ MapController::~MapController() {
 }
 
 void MapController::create_map(const std::pair<int, int>& dimensions) {
-    int id = 0;
     srand(time(NULL));
+    _sizeX = dimensions.first;
+    _sizeY = dimensions.second;
     for (int i = 0; i < dimensions.first; ++i) {
         for (int j = 0; j < dimensions.second; ++j) {
             int prob = rand() % 101;
             if (prob <= _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) {
                 auto field_ptr = _pBuilder->createPlains(i, j);
-                _field_map.emplace(id, field_ptr);
+                _worldMap.emplace(field_ptr);
             } else if ((prob > _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) && (prob < (_chance_vec[static_cast<int> (FieldTypes::fields_chance)] + _chance_vec[static_cast<int> (FieldTypes::woods_chance)]))) {
                 auto field_ptr = _pBuilder-> createForest(i, j);
-                _field_map.emplace(id, field_ptr);
+                _worldMap.emplace(field_ptr);
             } else {
                 auto field_ptr = _pBuilder->createWater(i, j);
-                _field_map.emplace(id, field_ptr);
+                _worldMap.emplace(field_ptr);
             }
-            ++id;
         }
         std::cout << "\n";
     }
@@ -41,21 +41,21 @@ void MapController::create_map(const std::pair<int, int>& dimensions) {
 
 void MapController::save_map() {
     _pMapWriter = std::make_shared<MapWriter>();
-    _pMapWriter->writeMap(_field_map);
+    _pMapWriter->writeMap(_worldMap);
 }
 
 void MapController::load_map() {
     _pMapReader = std::make_shared<MapReader>(_pBuilder);
-    _pMapReader->loadMapfromXML(_field_map);
+    _pMapReader->loadMapfromXML(_worldMap);
 }
 
 void MapController::print_map() {
-    for (auto& element : _field_map) {
-        element.second->printField();
-    }
+//    for (auto& element : _worldMap) {
+//        element.second->printField();
+//    }
 }
 
 void MapController::displayFieldInfo(std::pair<int,int> field)
 {
-    _pDisplay->displayInfo(field, _field_map);
+    _pDisplay->displayInfo(field, _worldMap);
 }

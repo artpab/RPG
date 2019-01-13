@@ -32,6 +32,8 @@ enum class FieldTypes {
     fields_chance, woods_chance, water_chance
 };
 
+typename std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
+
 class MapController {
 public:
     MapController();
@@ -43,15 +45,20 @@ public:
     void load_map_from_XML(std::shared_ptr<MapReader>, std::map<int, std::shared_ptr<IField>>&);
     void print_map();
     void displayFieldInfo(std::pair<int,int>);
+    int getSizeX(){return _sizeX;};
+    int getSizeY(){return _sizeY;};
 
 
 private:
-    std::map<int, std::shared_ptr<IField>> _field_map;
+    worldVector _worldMap;
     std::vector<int> _chance_vec;
     std::shared_ptr<MapWriter> _pMapWriter ;
     std::shared_ptr<MapReader> _pMapReader ;
     std::shared_ptr<FieldBuilder> _pBuilder;
     std::shared_ptr<Display> _pDisplay;
+    int _sizeX, _sizeY;
+    
+    
 
 };
 

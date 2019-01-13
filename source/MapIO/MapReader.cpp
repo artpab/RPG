@@ -26,7 +26,7 @@ MapReader::MapReader(const MapReader& orig) {
 MapReader::~MapReader() {
 }
 
-void MapReader::loadMapfromXML(std::map<int, std::shared_ptr<IField>>&outputMap) {
+void MapReader::loadMapfromXML(std::pair<int,int> dimensions, std::map<int, std::shared_ptr<IField>>&outputMap) {
     std::string file_name;
     std::string path_base{"/home/goti/Documents/C++Projects/RPG/"};
     std::cout << "What is the name of the file to load? \n";
@@ -45,6 +45,7 @@ void MapReader::loadMapfromXML(std::map<int, std::shared_ptr<IField>>&outputMap)
         if (v.first == "field") {
             id = v.second.get<int>("id");
             if (v.second.get<std::string>("type") == "Plains") {
+                
                 
                 auto field_ptr = _pBuilder->createPlains(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
                 outputMap.emplace(id, field_ptr);

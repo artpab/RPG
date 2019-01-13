@@ -26,12 +26,14 @@
 #include <boost/foreach.hpp>
 #include <memory>
 
+typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
+
 class MapReader {
 public:
     MapReader(const std::shared_ptr<FieldBuilder>&);
     MapReader(const MapReader& orig);
     virtual ~MapReader();
-    void loadMapfromXML(std::map<int,std::shared_ptr<IField>>&);
+    void loadMapfromXML(worldVector&);
 
 private:
     std::shared_ptr<FieldBuilder> _pBuilder;
