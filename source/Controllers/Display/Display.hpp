@@ -22,7 +22,7 @@ public:
     Display();
     Display(const Display& orig);
     virtual ~Display();
-    void displayInfo(const std::pair<int,int>&, const std::map<int, std::shared_ptr<IField>>& );
+//    void displayInfo(const std::pair<int,int>&, const std::map<int, std::shared_ptr<IField>>& );
 private:
 
 };

@@ -57,13 +57,13 @@ void GameController::prepareMap() {
 void GameController::startGame() {
     int c = 0;
 
-    while (c != 27) {
-        std::cout << "DUPA1\n";
-        std::string input;
-        std::cout << "Would you like to get info about some field ?\n";
-        auto position = askForDimensions();
-        ptr_MapController->displayFieldInfo(position);
-    }
+//    while (c != 27) {
+//        std::cout << "DUPA1\n";
+//        std::string input;
+//        std::cout << "Would you like to get info about some field ?\n";
+//        auto position = askForDimensions();
+//        ptr_MapController->displayFieldInfo(position);
+//    }
 }
 
 void GameController::gatherInformation() {

@@ -18,11 +18,13 @@
 #include <map>
 #include "../Fields/IField.hpp"
 
+typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
+
 class MapWriter {
 public:
     MapWriter();
     virtual ~MapWriter();
-    void writeMap(const std::map<int, std::shared_ptr<IField>>&);
+    void writeMap(const worldVector&);
 private:
 
 };

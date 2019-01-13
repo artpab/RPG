@@ -32,7 +32,7 @@ enum class FieldTypes {
     fields_chance, woods_chance, water_chance
 };
 
-typename std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
+typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
 
 class MapController {
 public:

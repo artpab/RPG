@@ -20,29 +20,37 @@ using boost::property_tree::xml_writer_settings;
 MapWriter::MapWriter() {
 }
 
-
 MapWriter::~MapWriter() {
 }
 
-void MapWriter::writeMap(const std::map<int, std::shared_ptr<IField>>&map_ptr) {
+void MapWriter::writeMap(const worldVector& map_ptr) {
 
     ptree tree;
 
     tree.add("fields.<xmlattr>.version", "1.0");
-    for (auto& elem : map_ptr) {
-        ptree& field = tree.add("fields.field", "");
-        field.add("id", elem.first);
-        field.add("positionX", elem.second->getX());
-        field.add("positionY", elem.second->getY());
-        field.add("type", elem.second->getType());
-    }
-    std::string path_base {"/home/goti/Documents/C++Projects/RPG/"};
+    for (auto& elemX : map_ptr)
+        for (auto& elem : elemX) {
+            ptree& field = tree.add("fields.field", "");
+            field.add("positionX", elem->getX());
+            field.add("positionY", elem->getY());
+            field.add("type", elem->getType());
+        }
+
+
+    //    for (auto& elem : map_ptr) {
+    //        ptree& field = tree.add("fields.field", "");
+    //        field.add("id", elem.first);
+    //        field.add("positionX", elem.second->getX());
+    //        field.add("positionY", elem.second->getY());
+    //        field.add("type", elem.second->getType());
+    //    }
+    std::string path_base{"/home/goti/Documents/C++Projects/RPG/"};
     std::string file_name;
-    std::cout << "What is the name of the file? \n";    
+    std::cout << "What is the name of the file? \n";
     std::cin>>file_name;
-    
-    
-    write_xml(path_base+file_name, tree,
+
+
+    write_xml(path_base + file_name, tree,
             std::locale(),
             xml_writer_settings<std::string>(' ', 4));
 

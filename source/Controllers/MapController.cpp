@@ -21,19 +21,24 @@ void MapController::create_map(const std::pair<int, int>& dimensions) {
     srand(time(NULL));
     _sizeX = dimensions.first;
     _sizeY = dimensions.second;
-    for (int i = 0; i < dimensions.first; ++i) {
-        for (int j = 0; j < dimensions.second; ++j) {
+    for (int i = 0; i < _sizeX; ++i) {
+        for (int j = 0; j<_sizeY; ++j) {
             int prob = rand() % 101;
             if (prob <= _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) {
                 auto field_ptr = _pBuilder->createPlains(i, j);
-                _worldMap.emplace(field_ptr);
+                std::cout<<field_ptr->getType()<<" ";
+                _worldMap[i].push_back(field_ptr);
+ 
             } else if ((prob > _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) && (prob < (_chance_vec[static_cast<int> (FieldTypes::fields_chance)] + _chance_vec[static_cast<int> (FieldTypes::woods_chance)]))) {
                 auto field_ptr = _pBuilder-> createForest(i, j);
-                _worldMap.emplace(field_ptr);
+                std::cout<<field_ptr->getType()<<" ";
+                _worldMap[i].push_back(field_ptr);
             } else {
                 auto field_ptr = _pBuilder->createWater(i, j);
-                _worldMap.emplace(field_ptr);
+                std::cout<<field_ptr->getType()<<" ";
+                _worldMap[i].push_back(field_ptr);
             }
+//            std::cout<<field_ptr->getType()<<" ";
         }
         std::cout << "\n";
     }
@@ -46,7 +51,7 @@ void MapController::save_map() {
 
 void MapController::load_map() {
     _pMapReader = std::make_shared<MapReader>(_pBuilder);
-    _pMapReader->loadMapfromXML(_worldMap);
+    _pMapReader->loadMapfromXML(std::make_pair(_sizeX,_sizeY),_worldMap);
 }
 
 void MapController::print_map() {
@@ -57,5 +62,5 @@ void MapController::print_map() {
 
 void MapController::displayFieldInfo(std::pair<int,int> field)
 {
-    _pDisplay->displayInfo(field, _worldMap);
+//    _pDisplay->displayInfo(field, _worldMap);
 }
