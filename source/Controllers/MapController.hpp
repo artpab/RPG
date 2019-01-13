@@ -45,8 +45,9 @@ public:
     void load_map_from_XML(std::shared_ptr<MapReader>, std::map<int, std::shared_ptr<IField>>&);
     void print_map();
     void displayFieldInfo(std::pair<int,int>);
-    int getSizeX(){return _sizeX;};
-    int getSizeY(){return _sizeY;};
+    int getSizeX(){return _rows;};
+    int getSizeY(){return _columns;};
+    void initializeMap(worldVector&);
 
 
 private:
@@ -56,7 +57,7 @@ private:
     std::shared_ptr<MapReader> _pMapReader ;
     std::shared_ptr<FieldBuilder> _pBuilder;
     std::shared_ptr<Display> _pDisplay;
-    int _sizeX, _sizeY;
+    int _rows, _columns;
     
     
 

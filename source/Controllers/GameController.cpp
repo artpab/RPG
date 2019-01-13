@@ -82,7 +82,7 @@ std::pair<int, int> GameController::askForDimensions() {
     u_int32_t x = 0, y = 0;
 
     std::cout << "Please provide the dimensions for the map: \n";
-    std::cout << "X: ";
+    std::cout << "Number of rows: ";
     std::cin>>x;
     while (std::cin.fail()) {
         std::cout << "Please provide a proper value !\n";
@@ -90,7 +90,7 @@ std::pair<int, int> GameController::askForDimensions() {
         std::cin.ignore(256, '\n');
         std::cin >> x;
     }
-    std::cout << "Y ";
+    std::cout << "Number of columns:  ";
     std::cin>>y;
     while (std::cin.fail()) {
         std::cout << "Please provide a proper value \n!";

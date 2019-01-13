@@ -19,27 +19,51 @@ MapController::~MapController() {
 
 void MapController::create_map(const std::pair<int, int>& dimensions) {
     srand(time(NULL));
-    _sizeX = dimensions.first;
-    _sizeY = dimensions.second;
-    for (int i = 0; i < _sizeX; ++i) {
-        for (int j = 0; j<_sizeY; ++j) {
+    _rows = dimensions.first;
+    _columns = dimensions.second;
+    //    initializeMap(_worldMap);
+    //    for (int i = 0; i < _sizeX; ++i) {
+    //        for (int j = 0; j < _sizeY; ++j) {
+    //            int prob = rand() % 101;
+    //            if (prob <= _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) {
+    //                auto field_ptr = _pBuilder->createPlains(i, j);
+    //                std::cout << field_ptr->getType() << " ";
+    //                _worldMap[i].push_back(field_ptr);
+    //
+    //            } else if ((prob > _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) && (prob < (_chance_vec[static_cast<int> (FieldTypes::fields_chance)] + _chance_vec[static_cast<int> (FieldTypes::woods_chance)]))) {
+    //                auto field_ptr = _pBuilder-> createForest(i, j);
+    //                std::cout << field_ptr->getType() << " ";
+    //                _worldMap[i].push_back(field_ptr);
+    //            } else {
+    //                auto field_ptr = _pBuilder->createWater(i, j);
+    //                std::cout << field_ptr->getType() << " ";
+    //                _worldMap[i].push_back(field_ptr);
+    //            }
+    //        }
+    //        std::cout << "\n";
+    //    }
+
+    for (int i = 0; i < _rows; ++i) {
+        std::vector<std::shared_ptr < IField>> vec;
+        for (int j = 0; j < _columns; ++j) {
             int prob = rand() % 101;
+
             if (prob <= _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) {
                 auto field_ptr = _pBuilder->createPlains(i, j);
-                std::cout<<field_ptr->getType()<<" ";
-                _worldMap[i].push_back(field_ptr);
- 
+                vec.push_back(field_ptr);
+                std::cout << field_ptr->getType() << " ";
+
             } else if ((prob > _chance_vec[static_cast<int> (FieldTypes::fields_chance)]) && (prob < (_chance_vec[static_cast<int> (FieldTypes::fields_chance)] + _chance_vec[static_cast<int> (FieldTypes::woods_chance)]))) {
                 auto field_ptr = _pBuilder-> createForest(i, j);
-                std::cout<<field_ptr->getType()<<" ";
-                _worldMap[i].push_back(field_ptr);
+                vec.push_back(field_ptr);
+                std::cout << field_ptr->getType() << " ";
             } else {
                 auto field_ptr = _pBuilder->createWater(i, j);
-                std::cout<<field_ptr->getType()<<" ";
-                _worldMap[i].push_back(field_ptr);
+                vec.push_back(field_ptr);
+                std::cout << field_ptr->getType() << " ";
             }
-//            std::cout<<field_ptr->getType()<<" ";
         }
+        _worldMap.push_back(vec);
         std::cout << "\n";
     }
 }
@@ -51,16 +75,21 @@ void MapController::save_map() {
 
 void MapController::load_map() {
     _pMapReader = std::make_shared<MapReader>(_pBuilder);
-    _pMapReader->loadMapfromXML(std::make_pair(_sizeX,_sizeY),_worldMap);
+    _pMapReader->loadMapfromXML(std::make_pair(_rows, _columns), _worldMap);
 }
 
 void MapController::print_map() {
-//    for (auto& element : _worldMap) {
-//        element.second->printField();
-//    }
+    //    for (auto& element : _worldMap) {
+    //        element.second->printField();
+    //    }
 }
 
-void MapController::displayFieldInfo(std::pair<int,int> field)
-{
-//    _pDisplay->displayInfo(field, _worldMap);
+void MapController::displayFieldInfo(std::pair<int, int> field) {
+    //    _pDisplay->displayInfo(field, _worldMap);
+}
+
+void MapController::initializeMap(worldVector& _worldMap) {
+    std::vector<std::shared_ptr < IField >> vec1(_columns, nullptr);
+    worldVector vec2(_rows, vec1);
+    _worldMap = vec2;
 }
