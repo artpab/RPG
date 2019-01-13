@@ -19,10 +19,10 @@
 class Plains : public IField {
 private:
     int _posX, _posY;
-    std::shared_ptr<PlainsModel> _model_ptr = nullptr;
+    std::shared_ptr<ITerrainModel> _model_ptr;
 public:
     virtual ~Plains();
-    Plains(int X, int Y, std::shared_ptr<PlainsModel> ptr);
+    Plains(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
     void printField() override;
     std::string getType() override;
     std::ostream& operator<<(std::ostream& stream) override;

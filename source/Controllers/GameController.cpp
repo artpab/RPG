@@ -12,6 +12,8 @@
  */
 
 #include "GameController.hpp"
+#include <iostream>
+#include <stdio.h>
 
 GameController &GameController::getInstance() {
     static GameController _instance;
@@ -32,8 +34,7 @@ void GameController::prepareMap() {
         {
             std::cout << " Generating a new map! \n";
             auto dimensions = askForDimensions();
-            std::vector<int> landscape_chance_vec{60, 30, 10};
-            ptr_MapController->create_map(dimensions, landscape_chance_vec);
+            ptr_MapController->create_map(dimensions);
             ptr_MapController->print_map();
             askForMapSave();
             break;
@@ -54,7 +55,15 @@ void GameController::prepareMap() {
 }
 
 void GameController::startGame() {
+    int c = 0;
 
+    while (c != 27) {
+        std::cout << "DUPA1\n";
+        std::string input;
+        std::cout << "Would you like to get info about some field ?\n";
+        auto position = askForDimensions();
+        ptr_MapController->displayFieldInfo(position);
+    }
 }
 
 void GameController::gatherInformation() {
@@ -65,7 +74,7 @@ void GameController::gatherInformation() {
     setStartingPoint(input);
 }
 
-void GameController::setStartingPoint(const std::string& choice) {
+void GameController::setStartingPoint(const std::string & choice) {
     startingPoint = (GameStartingPoint) std::stoi(choice);
 }
 
@@ -103,10 +112,9 @@ void GameController::askForMapSave() {
         std::cin.ignore(256, '\n');
         std::cin >> input;
     }
-    
-    if (input=="Y" || input == "y")
-    {
+
+    if (input == "Y" || input == "y") {
         ptr_MapController->save_map();
     }
 
-    }
+}

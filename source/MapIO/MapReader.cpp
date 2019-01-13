@@ -17,7 +17,7 @@
 //using boost::property_tree::write_xml;
 //using boost::property_tree::xml_writer_settings;
 
-MapReader::MapReader() {
+MapReader::MapReader(const std::shared_ptr<FieldBuilder>& ptr):_pBuilder(ptr) {
 }
 
 MapReader::MapReader(const MapReader& orig) {
@@ -45,13 +45,14 @@ void MapReader::loadMapfromXML(std::map<int, std::shared_ptr<IField>>&outputMap)
         if (v.first == "field") {
             id = v.second.get<int>("id");
             if (v.second.get<std::string>("type") == "Plains") {
-                auto field_ptr = std::make_shared<Plains>(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
+                
+                auto field_ptr = _pBuilder->createPlains(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
                 outputMap.emplace(id, field_ptr);
             } else if (v.second.get<std::string>("type") == "Forest") {
-                auto field_ptr = std::make_shared<Forest>(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
+                auto field_ptr = _pBuilder->createForest(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
                 outputMap.emplace(id, field_ptr);
             } else {
-                auto field_ptr = std::make_shared<Water>(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
+                auto field_ptr = _pBuilder->createWater(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
                 outputMap.emplace(id, field_ptr);
             }
         }

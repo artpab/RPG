@@ -13,7 +13,7 @@
 
 #include "ForestModel.hpp"
 
-ForestModel::ForestModel() {
+ForestModel::ForestModel(){
 }
 
 ForestModel::ForestModel(const ForestModel& orig) {

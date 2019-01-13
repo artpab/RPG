@@ -22,6 +22,8 @@
 #include "../Fields/Plains.hpp"
 #include "../MapIO/MapWriter.hpp"
 #include "../MapIO/MapReader.hpp"
+#include "Builders/FieldBuilder.hpp"
+#include "Display/Display.hpp"
 #include <iostream>
 #include <ctime>
 #include <vector>
@@ -35,21 +37,21 @@ public:
     MapController();
     MapController(std::vector<int> chance_vec);
     virtual ~MapController();
-    void create_map(const std::pair<int, int>&, const std::vector<int>&);
+    void create_map(const std::pair<int, int>&);
     void save_map();
     void load_map();
     void load_map_from_XML(std::shared_ptr<MapReader>, std::map<int, std::shared_ptr<IField>>&);
     void print_map();
-    void create_models();
+    void displayFieldInfo(std::pair<int,int>);
+
 
 private:
     std::map<int, std::shared_ptr<IField>> _field_map;
     std::vector<int> _chance_vec;
-    std::shared_ptr<MapWriter> _ptr_MapWriter = nullptr;
-    std::shared_ptr<MapReader> _ptr_MapReader = nullptr;
-    std::shared_ptr<ForestModel> _ptr_FModel = nullptr;
-    std::shared_ptr<WaterModel> _ptr_WModel = nullptr;
-    std::shared_ptr<PlainsModel> _ptr_PModel = nullptr;
+    std::shared_ptr<MapWriter> _pMapWriter ;
+    std::shared_ptr<MapReader> _pMapReader ;
+    std::shared_ptr<FieldBuilder> _pBuilder;
+    std::shared_ptr<Display> _pDisplay;
 
 };
 

@@ -21,19 +21,20 @@
 #include "../Fields/Forest.hpp"
 #include "../Fields/Water.hpp"
 #include "../Fields/Plains.hpp"
+#include "../Controllers/Builders/FieldBuilder.hpp"
 #include <iostream>
 #include <boost/foreach.hpp>
 #include <memory>
 
 class MapReader {
 public:
-    MapReader();
+    MapReader(const std::shared_ptr<FieldBuilder>&);
     MapReader(const MapReader& orig);
     virtual ~MapReader();
     void loadMapfromXML(std::map<int,std::shared_ptr<IField>>&);
 
 private:
-
+    std::shared_ptr<FieldBuilder> _pBuilder;
 };
 
 #endif /* MAPREADER_HPP */
