@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Map.hpp
- * Author: goti
- *
- * Created on January 6, 2019, 12:11 PM
- */
-
 #ifndef MAPCONTROLLER_HPP
 #define MAPCONTROLLER_HPP
 #include <map>
@@ -23,7 +10,7 @@
 #include "../MapIO/MapWriter.hpp"
 #include "../MapIO/MapReader.hpp"
 #include "Builders/FieldBuilder.hpp"
-#include "Display/Display.hpp"
+#include "../View/Display/Display.hpp"
 #include <iostream>
 #include <ctime>
 #include <vector>
@@ -42,12 +29,12 @@ public:
     void create_map(const std::pair<int, int>&);
     void save_map();
     void load_map();
-    void load_map_from_XML(std::shared_ptr<MapReader>, std::map<int, std::shared_ptr<IField>>&);
     void print_map();
     void displayFieldInfo(std::pair<int,int>);
     int getSizeX(){return _rows;};
     int getSizeY(){return _columns;};
     void initializeMap(worldVector&);
+    void initializeMap();
 
 
 private:

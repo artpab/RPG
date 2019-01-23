@@ -15,14 +15,17 @@
 #define DISPLAY_HPP
 #include <iostream>
 //#include <pair>
-#include <map>
+#include <vector>
 #include "../../Fields/IField.hpp"
+
+typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
+
 class Display {
 public:
     Display();
     Display(const Display& orig);
     virtual ~Display();
-//    void displayInfo(const std::pair<int,int>&, const std::map<int, std::shared_ptr<IField>>& );
+    void displayInfo(const std::pair<int,int>&, const worldVector& worldMap);
 private:
 
 };

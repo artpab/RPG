@@ -23,11 +23,11 @@ private:
 public:
     virtual ~Plains();
     Plains(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
-    void printField() override;
     std::string getType() override;
-    std::ostream& operator<<(std::ostream& stream) override;
     int getX() override {return _posX;}
     int getY() override {return _posY;}
+    std::string printField() override {return "."; }
+    auto getModelptr() {return _model_ptr;}
 
 private:
 

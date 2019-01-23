@@ -42,6 +42,7 @@ void GameController::prepareMap() {
         case GameStartingPoint::load_map_from_file:
         {
             std::cout << "Loading map from a file! \n";
+//            ptr_MapController->initializeMap();
             ptr_MapController->load_map();
             ptr_MapController->print_map();
             break;
@@ -57,13 +58,9 @@ void GameController::prepareMap() {
 void GameController::startGame() {
     int c = 0;
 
-//    while (c != 27) {
-//        std::cout << "DUPA1\n";
-//        std::string input;
-//        std::cout << "Would you like to get info about some field ?\n";
-//        auto position = askForDimensions();
-//        ptr_MapController->displayFieldInfo(position);
-//    }
+        std::cout << "Would you like to get info about some field ?\n";
+        auto position = askForDimensions();
+        ptr_MapController->displayFieldInfo(position);
 }
 
 void GameController::gatherInformation() {

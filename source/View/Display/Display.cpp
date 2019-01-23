@@ -21,8 +21,8 @@ Display::Display(const Display& orig) {
 
 Display::~Display() {
 }
-//
-//void Display::displayInfo(const std::pair<int,int>& field, const std::map<int, std::shared_ptr<IField>>& map)
-//{
-//    std::cout<<"DUPA";
-//}
+
+void Display::displayInfo(const std::pair<int,int>& field, const worldVector& worldMap)
+{
+    std::cout<<worldMap[field.first][field.second]->getModelptr()->getMovementCost();
+}

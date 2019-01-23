@@ -23,10 +23,12 @@ MapWriter::MapWriter() {
 MapWriter::~MapWriter() {
 }
 
-void MapWriter::writeMap(const worldVector& map_ptr) {
+void MapWriter::writeMap(const worldVector& map_ptr, std::pair<int,int> dimensions) {
 
     ptree tree;
-
+    ptree& data = tree.add("mapInfo","");
+    data.add("sizeX",dimensions.first);
+    data.add("sizeY",dimensions.second);        
     tree.add("fields.<xmlattr>.version", "1.0");
     for (auto& elemX : map_ptr)
         for (auto& elem : elemX) {
@@ -36,14 +38,6 @@ void MapWriter::writeMap(const worldVector& map_ptr) {
             field.add("type", elem->getType());
         }
 
-
-    //    for (auto& elem : map_ptr) {
-    //        ptree& field = tree.add("fields.field", "");
-    //        field.add("id", elem.first);
-    //        field.add("positionX", elem.second->getX());
-    //        field.add("positionY", elem.second->getY());
-    //        field.add("type", elem.second->getType());
-    //    }
     std::string path_base{"/home/goti/Documents/C++Projects/RPG/"};
     std::string file_name;
     std::cout << "What is the name of the file? \n";

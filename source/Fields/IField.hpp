@@ -18,9 +18,9 @@ public:
 
     virtual int getX() = 0;
     virtual int getY() = 0;
-    virtual void printField() = 0;
+    virtual std::string printField() = 0;
     virtual std::string getType() = 0;
-    virtual std::ostream& operator<<(std::ostream& stream) = 0;
+    virtual auto getModelptr() = 0;
 private:
 
 };

@@ -33,7 +33,7 @@ public:
     MapReader(const std::shared_ptr<FieldBuilder>&);
     MapReader(const MapReader& orig);
     virtual ~MapReader();
-    void loadMapfromXML(std::pair<int,int>, worldVector&);
+    void loadMapfromXML( worldVector&);
 
 private:
     std::shared_ptr<FieldBuilder> _pBuilder;

@@ -24,7 +24,7 @@ class MapWriter {
 public:
     MapWriter();
     virtual ~MapWriter();
-    void writeMap(const worldVector&);
+    void writeMap(const worldVector&, std::pair<int,int>);
 private:
 
 };

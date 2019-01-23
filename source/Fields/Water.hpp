@@ -13,9 +13,9 @@ public:
     Water(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
     Water(const Water& orig);
     virtual ~Water();
-    void printField() override;
     std::string getType() override;
-    std::ostream& operator<<(std::ostream& stream) override;
+    std::string printField() override {return "~"; }
+
 
     int getX() override {
         return _posX;
@@ -24,6 +24,7 @@ public:
     int getY() override {
         return _posY;
     }
+        auto getModelptr() {return _model_ptr;}
 
 };
 

@@ -13,9 +13,6 @@
 
 #include "MapReader.hpp"
 
-//using boost::property_tree::ptree;
-//using boost::property_tree::write_xml;
-//using boost::property_tree::xml_writer_settings;
 
 MapReader::MapReader(const std::shared_ptr<FieldBuilder>& ptr) : _pBuilder(ptr) {
 }
@@ -26,7 +23,7 @@ MapReader::MapReader(const MapReader& orig) {
 MapReader::~MapReader() {
 }
 
-void MapReader::loadMapfromXML(std::pair<int, int> dimensions, worldVector&  world_map) {
+void MapReader::loadMapfromXML(worldVector& world_map) {
     std::string file_name;
     std::string path_base{"/home/goti/Documents/C++Projects/RPG/"};
     std::cout << "What is the name of the file to load? \n";
@@ -36,26 +33,38 @@ void MapReader::loadMapfromXML(std::pair<int, int> dimensions, worldVector&  wor
     using boost::property_tree::ptree;
     ptree pt;
     read_xml(path_base + file_name, pt);
+    int sizeX;
+    int sizeY;
+    sizeX = pt.get<int>("mapInfo.sizeX");
+    sizeY = pt.get<int>("mapInfo.sizeY");
 
     // traverse pt
+    std::vector<std::shared_ptr < IField>> vec;
+    int temp = 0;
+    std::shared_ptr<IField> field_ptr;
 
     BOOST_FOREACH(boost::property_tree::ptree::value_type &v, pt.get_child("fields")) {
+        int x, y;
         if (v.first == "field") {
-            for (int i = 0; i < dimensions.first; ++i) {
-                for (int j = 0; j < dimensions.second; ++j) {
-                    if (v.second.get<std::string>("type") == "Plains") {
-                        auto field_ptr = _pBuilder->createPlains(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
-                        world_map[i].push_back(field_ptr);
-                    } else if (v.second.get<std::string>("type") == "Forest") {
-                                                auto field_ptr = _pBuilder->createForest(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
-                                                world_map[i].push_back(field_ptr);
-                    } else {
-                                                auto field_ptr = _pBuilder->createWater(v.second.get<int>("positionX"), v.second.get<int>("positionY"));
-                                                world_map[i].push_back(field_ptr);
-                    }
-                }
+            x = v.second.get<int>("positionX");
+            y = v.second.get<int>("positionY");
+            if (v.second.get<std::string>("type") == "Plains") {
+                field_ptr = _pBuilder->createPlains(x, y);
+            } else if (v.second.get<std::string>("type") == "Forest") {
+                field_ptr = _pBuilder->createForest(x, y);
+            } else {
+                field_ptr = _pBuilder->createWater(x, y);
             }
-        }
-    }
+            vec.push_back(field_ptr);
+            ++temp;
+            if (temp == sizeY) {
+                temp = 0;
+                world_map.push_back(vec);
+                vec.clear();
+            }
 
+
+        }
+
+    }
 }

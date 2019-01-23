@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   FieldBuilder.cpp
- * Author: goti
- * 
- * Created on January 13, 2019, 1:54 PM
- */
-
 #include "FieldBuilder.hpp"
 
 FieldBuilder::FieldBuilder() {
@@ -24,7 +11,7 @@ FieldBuilder::~FieldBuilder() {
 }
 
 void FieldBuilder::create_models() {
-    std::cout<<"Create models: DUPA";
+
     _models.emplace("Plains", std::make_shared<PlainsModel>());
     _models.emplace("Water", std::make_shared<WaterModel>());
     _models.emplace("Forest", std::make_shared<ForestModel>());

@@ -11,9 +11,7 @@ private:
 public:
     Forest(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
     virtual ~Forest();
-    void printField() override;
     std::string getType() override;
-    std::ostream& operator<<(std::ostream& stream) override;
 
     int getX() override {
         return _posX;
@@ -22,6 +20,8 @@ public:
     int getY() override {
         return _posY;
     }
+    std::string printField() override {return "#"; }
+        auto getModelptr() {return _model_ptr;}
 private:
 };
 
