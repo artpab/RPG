@@ -1,0 +1,21 @@
+#ifndef IMONSTER_HPP
+#define IMONSTER_HPP
+
+enum class MonsterType
+{
+Animal, Humanoid, Goblin, Orc, Undead
+};
+
+enum class MonsterClass
+{
+Warrior, Archer, Mage
+};
+
+
+class IMonster
+{
+public:
+    IMonster();
+};
+
+#endif // IMONSTER_HPP

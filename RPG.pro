@@ -17,7 +17,9 @@ SOURCES += main.cpp \
     source/Fields/Water.cpp \
     source/MapIO/MapReader.cpp \
     source/MapIO/MapWriter.cpp \
-    source/View/Display/Display.cpp
+    source/View/Display/Display.cpp \
+    source/Monsters/IMonster.cpp \
+    source/Monsters/IMonsterFactory.cpp
 
 HEADERS += \
     source/Controllers/Builders/FieldBuilder.hpp \
@@ -33,4 +35,6 @@ HEADERS += \
     source/Fields/Water.hpp \
     source/MapIO/MapReader.hpp \
     source/MapIO/MapWriter.hpp \
-    source/View/Display/Display.hpp
+    source/View/Display/Display.hpp \
+    source/Monsters/IMonster.hpp \
+    source/Monsters/IMonsterFactory.hpp
