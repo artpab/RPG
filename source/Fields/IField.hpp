@@ -24,7 +24,7 @@ public:
     virtual std::string printField() = 0;
     virtual std::string getType() = 0;
     virtual std::shared_ptr<ITerrainModel> getModelPtr() = 0;
-    virtual void provideData = 0;
+//    virtual void provideData() = 0;
     
 private:
 
