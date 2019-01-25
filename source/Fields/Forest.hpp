@@ -7,7 +7,6 @@
 class Forest : public IField {
 private:
     int _posX, _posY;
-    std::shared_ptr<ITerrainModel> _model_ptr = nullptr;
 public:
     Forest(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
     virtual ~Forest();
@@ -21,7 +20,8 @@ public:
         return _posY;
     }
     std::string printField() override {return "#"; }
-        auto getModelptr() {return _model_ptr;}
+    std::shared_ptr<ITerrainModel> getModelPtr() override {return _model_ptr;}
+
 private:
 };
 

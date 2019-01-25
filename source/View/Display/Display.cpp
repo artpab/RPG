@@ -24,5 +24,5 @@ Display::~Display() {
 
 void Display::displayInfo(const std::pair<int,int>& field, const worldVector& worldMap)
 {
-    std::cout<<worldMap[field.first][field.second]->getModelptr()->getMovementCost();
+    std::cout<<worldMap[field.first][field.second]->getModelPtr()->getMovementCost();
 }

@@ -56,7 +56,7 @@ void GameController::prepareMap() {
 }
 
 void GameController::startGame() {
-    int c = 0;
+//    int c = 0;
 
         std::cout << "Would you like to get info about some field ?\n";
         auto position = askForDimensions();

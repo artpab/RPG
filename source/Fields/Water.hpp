@@ -8,7 +8,6 @@
 class Water : public IField {
 private:
     int _posX, _posY;
-        std::shared_ptr<ITerrainModel> _model_ptr = nullptr;
 public:
     Water(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
     Water(const Water& orig);
@@ -24,7 +23,7 @@ public:
     int getY() override {
         return _posY;
     }
-        auto getModelptr() {return _model_ptr;}
+        std::shared_ptr<ITerrainModel> getModelPtr() override {return _model_ptr;}
 
 };
 

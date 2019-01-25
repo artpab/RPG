@@ -4,8 +4,6 @@ FieldBuilder::FieldBuilder() {
     create_models();
 }
 
-FieldBuilder::FieldBuilder(const FieldBuilder& orig) {
-}
 
 FieldBuilder::~FieldBuilder() {
 }

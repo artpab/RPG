@@ -19,7 +19,6 @@
 class Plains : public IField {
 private:
     int _posX, _posY;
-    std::shared_ptr<ITerrainModel> _model_ptr;
 public:
     virtual ~Plains();
     Plains(int X, int Y, std::shared_ptr<ITerrainModel> ptr);
@@ -27,7 +26,7 @@ public:
     int getX() override {return _posX;}
     int getY() override {return _posY;}
     std::string printField() override {return "."; }
-    auto getModelptr() {return _model_ptr;}
+    std::shared_ptr<ITerrainModel> getModelPtr() override {return _model_ptr;}
 
 private:
 

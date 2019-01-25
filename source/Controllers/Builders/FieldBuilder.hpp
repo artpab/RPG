@@ -27,7 +27,6 @@
 class FieldBuilder {
 public:
     FieldBuilder();
-    FieldBuilder(const FieldBuilder& orig) ;
     virtual ~FieldBuilder();
     std::shared_ptr<Plains> createPlains(int, int);
     std::shared_ptr<Water> createWater(int,int);

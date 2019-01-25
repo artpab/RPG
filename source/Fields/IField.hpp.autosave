@@ -13,6 +13,7 @@
 class IField {
 protected:
     std::shared_ptr<ITerrainModel> _model_ptr = nullptr;
+//    std::shared_ptr<IMonster> _monster_ptr = nullptr;
     bool containsMonster = false;
 public:
     IField();

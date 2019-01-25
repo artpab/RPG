@@ -38,7 +38,7 @@ void MapWriter::writeMap(const worldVector& map_ptr, std::pair<int,int> dimensio
             field.add("type", elem->getType());
         }
 
-    std::string path_base{"/home/goti/Documents/C++Projects/RPG/"};
+    std::string path_base{"/home/arpa/Documents/RPG"};
     std::string file_name;
     std::cout << "What is the name of the file? \n";
     std::cin>>file_name;
