@@ -24,7 +24,7 @@ GameController::~GameController() {}
 
 GameController::GameController() {
   ptr_MapController = std::make_unique<MapController>();
-  ptr_MFactory = std::make_unique<IMonsterFactory>();
+  //  ptr_MFactory = std::make_unique<IMonsterFactory>();
 }
 
 void GameController::prepareMap() {
@@ -54,8 +54,14 @@ void GameController::startGame() {
 
   std::cout << "Would you like to get info about some field ?\n";
   auto position = askForDimensions();
-  ptr_MapController->displayFieldInfo(position);
   populateMap();
+  ptr_MapController->displayFieldInfo(position);
+  position = askForDimensions();
+  ptr_MapController->displayFieldInfo(position);
+  position = askForDimensions();
+  ptr_MapController->displayFieldInfo(position);
+  position = askForDimensions();
+  ptr_MapController->displayFieldInfo(position);
 }
 
 void GameController::gatherInformation() {
@@ -111,4 +117,4 @@ void GameController::askForMapSave() {
   }
 }
 
-void GameController::populateMap() { ptr_MapController->createMonsters(); }
+void GameController::populateMap() { ptr_MapController->populate(); }

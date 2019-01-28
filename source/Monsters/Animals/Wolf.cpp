@@ -1,6 +1,3 @@
 #include "Wolf.hpp"
 
-Wolf::Wolf()
-{
-
-}
+Wolf::Wolf() { std::cout << "STWORZYLEM WILKA !!!\n"; }

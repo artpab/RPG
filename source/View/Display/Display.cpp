@@ -4,25 +4,23 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Display.cpp
  * Author: goti
- * 
+ *
  * Created on January 13, 2019, 4:01 PM
  */
 
 #include "Display.hpp"
 
-Display::Display() {
-}
+Display::Display() {}
 
-Display::Display(const Display& orig) {
-}
+Display::Display(const Display &orig) {}
 
-Display::~Display() {
-}
+Display::~Display() {}
 
-void Display::displayInfo(const std::pair<int,int>& field, const worldVector& worldMap)
-{
-    std::cout<<worldMap[field.first][field.second]->getModelPtr()->getMovementCost();
+void Display::displayInfo(const std::pair<int, int> &field,
+                          const worldVector &worldMap) {
+  std::cout << worldMap[field.first][field.second]->monsterAvailable() << "\n";
+  std::cout << worldMap[field.first][field.second]->getMonsterPtr();
 }

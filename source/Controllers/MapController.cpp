@@ -5,7 +5,7 @@
 MapController::MapController() : _chance_vec{70, 20, 10} {
   _pBuilder = std::make_shared<FieldBuilder>();
   _pDisplay = std::make_shared<Display>();
-  _pMFactory = std::make_shared<IMonsterFactory>();
+  _pMGenerator = std::make_shared<MonsterGenerator>();
 }
 
 MapController::MapController(std::vector<int> chance_vec)
@@ -76,8 +76,4 @@ void MapController::initializeMap(worldVector &_worldMap) {
 
 void MapController::initializeMap() { initializeMap(_worldMap); }
 
-void MapController::createMonsters() { _pMFactory->populate(); }
-
-worldVector_ptr MapController::getMap() {
-  return std::make_shared<worldVector>(_worldMap);
-}
+void MapController::populate() { _pMGenerator->createMonsters(_worldMap); }

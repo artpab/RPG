@@ -7,7 +7,7 @@
 #include "../Fields/Water.hpp"
 #include "../MapIO/MapReader.hpp"
 #include "../MapIO/MapWriter.hpp"
-#include "../Monsters/IMonsterFactory.hpp"
+#include "../Monsters/MonsterGenerator.hpp"
 #include "../View/Display/Display.hpp"
 #include "Builders/FieldBuilder.hpp"
 #include <ctime>
@@ -34,7 +34,7 @@ public:
   int getSizeY() { return _columns; };
   void initializeMap(worldVector &);
   void initializeMap();
-  void createMonsters();
+  void populate();
   worldVector_ptr getMap();
 
 private:
@@ -44,7 +44,7 @@ private:
   std::shared_ptr<MapReader> _pMapReader;
   std::shared_ptr<FieldBuilder> _pBuilder;
   std::shared_ptr<Display> _pDisplay;
-  std::shared_ptr<IMonsterFactory> _pMFactory;
+  std::shared_ptr<MonsterGenerator> _pMGenerator;
   int _rows, _columns;
 };
 

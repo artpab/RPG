@@ -6,13 +6,12 @@
 
 class Monster {
 public:
-  //    Monster(std::shared_ptr<IBreed> breed_ptr);
-  Monster(int health);
+  Monster(std::shared_ptr<IBreed> breed_ptr);
 
 protected:
-  //    std::shared_ptr<IBreed> breed;
-  int current_health;
-  IBreed &breed;
+  std::shared_ptr<IBreed> breed;
+  int current_health = 100;
+  //  IBreed &breed;
 };
 
 #endif // IMONSTER_HPP
