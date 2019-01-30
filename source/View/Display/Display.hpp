@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Display.hpp
  * Author: goti
  *
@@ -15,20 +15,23 @@
 #define DISPLAY_HPP
 #include <iostream>
 //#include <pair>
-#include <vector>
 #include "../../Fields/IField.hpp"
+#include <vector>
 
 typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
 
 class Display {
 public:
-    Display();
-    Display(const Display& orig);
-    virtual ~Display();
-    void displayInfo(const std::pair<int,int>&, const worldVector& worldMap);
-private:
+  Display();
+  Display(const Display &orig);
+  virtual ~Display();
+  void displayInfo(const std::pair<int, int> &, const worldVector &worldMap);
+  void displayFieldInfo(const std::pair<int, int> &,
+                        const worldVector &worldMap);
+  void displayMonsterInfo(const std::pair<int, int> &,
+                          const worldVector &worldMap);
 
+private:
 };
 
 #endif /* DISPLAY_HPP */
-

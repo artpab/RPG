@@ -50,18 +50,11 @@ void GameController::prepareMap() {
 }
 
 void GameController::startGame() {
-  //    int c = 0;
-
-  std::cout << "Would you like to get info about some field ?\n";
-  auto position = askForDimensions();
   populateMap();
+  std::cout << "Would you like to get info about some field ?\n";
+  auto position = askForPosition();
   ptr_MapController->displayFieldInfo(position);
-  position = askForDimensions();
-  ptr_MapController->displayFieldInfo(position);
-  position = askForDimensions();
-  ptr_MapController->displayFieldInfo(position);
-  position = askForDimensions();
-  ptr_MapController->displayFieldInfo(position);
+  position = askForPosition();
 }
 
 void GameController::gatherInformation() {
@@ -78,7 +71,7 @@ void GameController::setStartingPoint(const std::string &choice) {
 }
 
 std::pair<int, int> GameController::askForDimensions() {
-  u_int32_t x = 0, y = 0;
+  int x = 0, y = 0;
 
   std::cout << "Please provide the dimensions for the map: \n";
   std::cout << "Number of rows: ";
@@ -93,6 +86,31 @@ std::pair<int, int> GameController::askForDimensions() {
   std::cin >> y;
   while (std::cin.fail()) {
     std::cout << "Please provide a proper value \n!";
+    std::cin.clear();
+    std::cin.ignore(256, '\n');
+    std::cin >> y;
+  }
+  return std::make_pair(x, y);
+}
+
+std::pair<int, int> GameController::askForPosition() {
+  int x, y;
+  int x_max = ptr_MapController->getSizeX();
+  int y_max = ptr_MapController->getSizeY();
+
+  std::cout << "Please provide the coordinates to check: \n";
+  std::cout << "X: ";
+  std::cin >> x;
+  while (std::cin.fail() || x >= x_max || x < 0) {
+    std::cout << "Please provide a proper value !\n";
+    std::cin.clear();
+    std::cin.ignore(256, '\n');
+    std::cin >> x;
+  }
+  std::cout << "Y: ";
+  std::cin >> y;
+  while (std::cin.fail() || y >= y_max || y < 0) {
+    std::cout << "Please provide a proper value !\n";
     std::cin.clear();
     std::cin.ignore(256, '\n');
     std::cin >> y;

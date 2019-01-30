@@ -32,6 +32,7 @@ public:
   void askForMapSave();
   void populateMap();
   ~GameController();
+  std::pair<int, int> askForPosition();
 
 private:
   GameController();

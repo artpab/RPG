@@ -4,14 +4,17 @@
 #include "IBreed.hpp"
 #include "memory"
 
+class IBreed;
+
 class Monster {
 public:
   Monster(std::shared_ptr<IBreed> breed_ptr);
+  int getCurrentHealth() { return current_health; }
+  std::shared_ptr<IBreed> getBreedPtr() { return breed; }
 
-protected:
+private:
+  int current_health;
   std::shared_ptr<IBreed> breed;
-  int current_health = 100;
-  //  IBreed &breed;
 };
 
 #endif // IMONSTER_HPP

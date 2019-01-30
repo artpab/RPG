@@ -1,13 +1,15 @@
 #ifndef BEAR_HPP
 #define BEAR_HPP
-#include "../Factories/AnimalFactory.hpp"
 #include "IAnimal.hpp"
 
 class Bear : public IAnimal {
 public:
   Bear();
   std::string attack() override { return "The bear attacks with his fangs !"; }
-  AnimalFactory *factory_ptr;
+  std::shared_ptr<Monster> create() override;
+  std::string getName() override { return "Bear"; };
+
+private:
 };
 
 #endif // BEAR_HPP

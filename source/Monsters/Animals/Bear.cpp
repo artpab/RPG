@@ -1,3 +1,8 @@
 #include "Bear.hpp"
 
-Bear::Bear() { std::cout << "STWORZYLEM NIEDZWIEDZIA !!!\n"; }
+Bear::Bear() { this->maxHealth = 200; }
+
+std::shared_ptr<Monster> Bear::create() {
+  //  auto ptr = shared_from_this();
+  return std::make_shared<Monster>(shared_from_this());
+}

@@ -23,15 +23,9 @@ IField::IField() {}
 
 IField::~IField() {}
 
-void IField::assignMonster(std::shared_ptr<Monster> &m_ptr) {
+void IField::assignMonster(std::shared_ptr<Monster> m_ptr) {
   monster_ptr = m_ptr;
   containsMonster = true;
 }
 
-std::string IField::monsterAvailable() {
-  if (containsMonster) {
-    return "There is a monster";
-  } else {
-    return "There is no monster here";
-  }
-};
+bool IField::monsterAvailable() { return containsMonster; }

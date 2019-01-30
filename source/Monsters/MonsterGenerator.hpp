@@ -3,30 +3,23 @@
 
 #include "../Fields/IField.hpp"
 #include "Animals/Bear.hpp"
-#include "Factories/AnimalFactory.hpp"
-#include "Factories/IMonsterFactory.hpp"
+#include "Animals/Wolf.hpp"
 #include "Monster.hpp"
 #include <map>
 #include <vector>
 
 typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
-typedef std::map<std::string, IBreed *> breedMap;
+typedef std::vector<std::shared_ptr<IBreed>> breedVec;
 
 class MonsterGenerator {
 public:
   MonsterGenerator();
-
-  void registerBreed(const std::string &type, IMonsterFactory *factory) {
-    factories.emplace(type, factory);
-  }
-  void createMonsters(worldVector &world_map);
-  void createMonstersFactories();
+  void populateMap(worldVector &world_map);
   void createBreeds();
 
 private:
-  std::map<std::string, IMonsterFactory *> factories;
   std::vector<std::shared_ptr<Monster>> monsters;
-  breedMap breeds;
+  breedVec breeds;
 };
 
 #endif // MONSTERGENERATOR_HPP

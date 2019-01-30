@@ -41,7 +41,6 @@ void MapController::create_map(const std::pair<int, int> &dimensions) {
       }
     }
     _worldMap.push_back(vec);
-    std::cout << "\n";
   }
 }
 
@@ -76,4 +75,4 @@ void MapController::initializeMap(worldVector &_worldMap) {
 
 void MapController::initializeMap() { initializeMap(_worldMap); }
 
-void MapController::populate() { _pMGenerator->createMonsters(_worldMap); }
+void MapController::populate() { _pMGenerator->populateMap(_worldMap); }

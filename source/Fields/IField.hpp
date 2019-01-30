@@ -27,8 +27,8 @@ public:
   virtual std::string printField() = 0;
   virtual std::string getType() = 0;
   virtual std::shared_ptr<ITerrainModel> getModelPtr() = 0;
-  void assignMonster(std::shared_ptr<Monster> &m_ptr);
-  std::string monsterAvailable();
+  void assignMonster(std::shared_ptr<Monster> m_ptr);
+  bool monsterAvailable();
   std::shared_ptr<Monster> getMonsterPtr() { return monster_ptr; };
 
   //    virtual void provideData() = 0;
