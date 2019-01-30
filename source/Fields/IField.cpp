@@ -4,23 +4,28 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Field.cpp
  * Author: goti
- * 
+ *
  * Created on January 6, 2019, 12:12 PM
  */
 
 #include "IField.hpp"
-#include "stdio.h"
 #include "iostream"
+#include "stdio.h"
 
-IField::IField() {
-}
+IField::IField() {}
 
-//IField::IField(std::shared_ptr<ITerrainModel> ptr):_model_ptr(ptr){
-    
+// IField::IField(std::shared_ptr<ITerrainModel> ptr):_model_ptr(ptr){
+
 //};
 
-IField::~IField() {
-};
+IField::~IField() {}
+
+void IField::assignMonster(std::shared_ptr<Monster> m_ptr) {
+  monster_ptr = m_ptr;
+  containsMonster = true;
+}
+
+bool IField::monsterAvailable() { return containsMonster; }

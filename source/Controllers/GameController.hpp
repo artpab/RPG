@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   GameController.hpp
  * Author: goti
  *
@@ -14,32 +14,30 @@
 #ifndef GAMECONTROLLER_HPP
 #define GAMECONTROLLER_HPP
 #include "MapController.hpp"
+
 #include <memory>
 
-enum class GameStartingPoint
-{
-    generate_new_map = 1,load_map_from_file = 2
-};
+enum class GameStartingPoint { generate_new_map = 1, load_map_from_file = 2 };
 
 class GameController {
 public:
-    static GameController& getInstance();
-    GameController(GameController const&) = delete;
-    void operator=(GameController const&) = delete;
-    void prepareMap();
-    void startGame();
-    void gatherInformation();
-    void setStartingPoint(const std::string&);
-    std::pair<int,int> askForDimensions();
-    void askForMapSave();
-    ~GameController();
+  static GameController &getInstance();
+  GameController(GameController const &) = delete;
+  void operator=(GameController const &) = delete;
+  void prepareMap();
+  void startGame();
+  void gatherInformation();
+  void setStartingPoint(const std::string &);
+  std::pair<int, int> askForDimensions();
+  void askForMapSave();
+  void populateMap();
+  ~GameController();
+  std::pair<int, int> askForPosition();
+
 private:
-    GameController();
-
-    std::unique_ptr<MapController> ptr_MapController;
-    GameStartingPoint startingPoint;
-
+  GameController();
+  std::unique_ptr<MapController> ptr_MapController;
+  GameStartingPoint startingPoint;
 };
 
 #endif /* GAMECONTROLLER_HPP */
-

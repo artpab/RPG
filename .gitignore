@@ -14,6 +14,7 @@ nbproject/
 *.so
 
 *.so
+*.pro.user
 
 # Packages #
 ############

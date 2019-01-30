@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   MapWriter.hpp
  * Author: goti
  *
@@ -13,21 +13,20 @@
 
 #ifndef MAPWRITER_HPP
 #define MAPWRITER_HPP
-#include <boost/property_tree/xml_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <map>
 #include "../Fields/IField.hpp"
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <map>
 
 typedef std::vector<std::vector<std::shared_ptr<IField>>> worldVector;
 
 class MapWriter {
 public:
-    MapWriter();
-    virtual ~MapWriter();
-    void writeMap(const worldVector&, std::pair<int,int>);
-private:
+  MapWriter();
+  virtual ~MapWriter();
+  void writeMap(const worldVector &, std::pair<int, int>);
 
+private:
 };
 
 #endif /* MAPWRITER_HPP */
-
