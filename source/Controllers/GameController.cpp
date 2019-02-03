@@ -24,7 +24,6 @@ GameController::~GameController() {}
 
 GameController::GameController() {
   ptr_MapController = std::make_unique<MapController>();
-  //  ptr_MFactory = std::make_unique<IMonsterFactory>();
 }
 
 void GameController::prepareMap() {
