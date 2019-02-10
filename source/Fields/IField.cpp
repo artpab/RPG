@@ -17,10 +17,6 @@
 
 IField::IField() {}
 
-// IField::IField(std::shared_ptr<ITerrainModel> ptr):_model_ptr(ptr){
-
-//};
-
 IField::~IField() {}
 
 void IField::assignMonster(std::shared_ptr<Monster> m_ptr) {

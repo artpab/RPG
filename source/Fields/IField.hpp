@@ -19,7 +19,6 @@ protected:
 
 public:
   IField();
-  //    IField(std::shared_ptr<ITerrainModel>);
   IField(const IField &orig) = delete;
   virtual ~IField();
   virtual int getX() = 0;

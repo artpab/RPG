@@ -20,6 +20,8 @@ void MapController::create_map(const std::pair<int, int> &dimensions) {
   srand(time(NULL));
   unsigned int seed = rand() % 256;
   PerlinNoise pn(seed);
+  // One can also generate the map using the default seed. Just uncomment the
+  // following line and comment the line above.
   //  PerlinNoise pn;
   _rows = dimensions.first;
   _columns = dimensions.second;
@@ -34,7 +36,8 @@ void MapController::create_map(const std::pair<int, int> &dimensions) {
     _worldMap.push_back(vec);
   }
 }
-
+// Method specifing the probability of different terrains and determining the
+// actual types of terrain.
 void MapController::biomeSelector(std::vector<std::shared_ptr<IField>> &vec,
                                   double val, std::pair<int, int> pos) {
   if (val <= 0.4) {
@@ -57,6 +60,8 @@ void MapController::save_map() {
 void MapController::load_map() {
   _pMapReader = std::make_shared<MapReader>(_pBuilder);
   _pMapReader->loadMapfromXML(_worldMap);
+  setRows(_worldMap.size());
+  setColumns(_worldMap[0].size());
 }
 
 void MapController::print_map() {
@@ -81,3 +86,7 @@ void MapController::initializeMap(worldVector &_worldMap) {
 void MapController::initializeMap() { initializeMap(_worldMap); }
 
 void MapController::populate() { _pMGenerator->populateMap(_worldMap); }
+
+void MapController::setRows(const int rows) { _rows = rows; }
+
+void MapController::setColumns(const int columns) { _columns = columns; }

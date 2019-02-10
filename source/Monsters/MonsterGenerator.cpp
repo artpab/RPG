@@ -19,11 +19,11 @@ void MonsterGenerator::populateMap(worldVector &world_map) {
     int temp_y = rand() % y;
     if (!world_map[temp_x][temp_y]->monsterAvailable()) {
       world_map[temp_x][temp_y]->assignMonster(monster);
-      std::cout << "Spawning " << monster->getBreedPtr()->getName()
-                << " at location [" << temp_x << "," << temp_y << "]\n";
+      //      std::cout << "Spawning " << monster->getBreedPtr()->getName()
+      //                << " at location [" << temp_x << "," << temp_y << "]\n";
     } else {
-      std::cout << "Cannot spawn monster at location [" << temp_x << ","
-                << temp_y << "]\n";
+      //      std::cout << "Cannot spawn monster at location [" << temp_x << ","
+      //                << temp_y << "]\n";
     }
   }
 }

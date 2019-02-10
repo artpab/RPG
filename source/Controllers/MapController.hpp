@@ -27,16 +27,30 @@ public:
   MapController(std::vector<double> chance_vec);
   virtual ~MapController();
   void create_map(const std::pair<int, int> &);
+
   void save_map();
+
   void load_map();
+
   void print_map();
+
   void displayFieldInfo(std::pair<int, int>);
+
   int getSizeX() { return _rows; };
+
   int getSizeY() { return _columns; };
+
   void initializeMap(worldVector &);
+
   void initializeMap();
+
   void populate();
+
   worldVector_ptr getMap();
+
+  void setRows(const int rows);
+
+  void setColumns(const int columns);
 
 private:
   worldVector _worldMap;
