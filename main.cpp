@@ -4,25 +4,24 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.cpp
  * Author: goti
  *
  * Created on January 6, 2019, 12:04 PM
  */
 
-#include <cstdlib>
 #include "source/Controllers/GameController.hpp"
+#include <cstdlib>
+#include <curses.h>
 #include <iostream>
 #include <memory>
 
 /*
- * 
+ *
  */
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
 
-    GameController::getInstance().prepareMap();
-    GameController::getInstance().startGame();
-    return 0;
+  GameController::getInstance().prepareMap();
+  GameController::getInstance().startGame();
 }
-

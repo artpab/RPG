@@ -2,6 +2,8 @@ TEMPLATE = app
 CONFIG += console c++14
 CONFIG -= app_bundle
 CONFIG -= qt
+LIBS += -L/usr/lib -lncurses
+
 
 SOURCES += main.cpp \
     source/Controllers/Builders/FieldBuilder.cpp \
@@ -23,7 +25,8 @@ SOURCES += main.cpp \
     source/Monsters/Monster.cpp \
     source/Monsters/Animals/Wolf.cpp \
     source/Monsters/MonsterGenerator.cpp \
-    source/Monsters/Animals/Bear.cpp
+    source/Monsters/Animals/Bear.cpp \
+    source/Controllers/Builders/PerlinNoise.cpp
 
 HEADERS += \
     source/Controllers/Builders/FieldBuilder.hpp \
@@ -45,4 +48,5 @@ HEADERS += \
     source/Monsters/Monster.hpp \
     source/Monsters/Animals/Wolf.hpp \
     source/Monsters/MonsterGenerator.hpp \
-    source/Monsters/Animals/Bear.hpp
+    source/Monsters/Animals/Bear.hpp \
+    source/Controllers/Builders/PerlinNoise.hpp
